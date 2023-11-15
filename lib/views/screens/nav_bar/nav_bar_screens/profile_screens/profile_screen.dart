@@ -13,6 +13,11 @@ class ProfileScreen extends StatelessWidget {
   //ProfileModel? dataNewsModel;
   @override
   Widget build(BuildContext context) {
+    final modelProvider = context.watch<ModelProvider>();
+    final isDarkModeEnabled = modelProvider.isDarkModeEnabled;
+    final defaultColor = isDarkModeEnabled ? Colors.black : Colors.white;
+    final containerColor = isDarkModeEnabled ? Colors.black87 : Colors.white;
+
     return Container(
       color: Colors.blue[800],
       child: SafeArea(
@@ -37,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
                   icon: Icon(
                     Icons.edit_note_outlined,
                     size: 40,
-                    color: Colors.white,
+                    color: defaultColor,
                   ),
                 ),
               ),
@@ -62,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
                     'MOHAMED AHMED',
                     style: TextStyle(
                       fontSize: 25,
-                      color: Colors.white,
+                      color: defaultColor,
                       fontWeight: FontWeight.w600,
                       letterSpacing: 2,
                     ),
@@ -74,7 +79,7 @@ class ProfileScreen extends StatelessWidget {
                       fontSize: 25,
                       fontWeight: FontWeight.w600,
                       fontStyle: FontStyle.italic,
-                      color: Colors.white,
+                      color:defaultColor,
                     ),
                   ),
                 ],
@@ -88,8 +93,8 @@ class ProfileScreen extends StatelessWidget {
               left: 20,
             ),
             height: MediaQuery.of(context).size.height / 2.2,
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            decoration:  BoxDecoration(
+              color: containerColor,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),
                 topRight: Radius.circular(40),

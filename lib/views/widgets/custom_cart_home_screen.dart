@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:master/models/model_provider.dart';
+import 'package:provider/provider.dart';
 import '../../models/data_news_model.dart';
-
 
 class CustomCartHomeScreen extends StatelessWidget {
   final DataNewsModel newsModel;
+
   const CustomCartHomeScreen({Key? key, required this.newsModel})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final formattedDate = DateFormat.yMMMd().format(newsModel.publishedAtTime);
+    final modelProvider = context.watch<ModelProvider>();
+    final isDarkModeEnabled = modelProvider.isDarkModeEnabled;
+    final containerColor = isDarkModeEnabled ? Colors.black54 : Colors.white;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20.0),
         child: Card(
-          color: Colors.white,
+          // color: Colors.white,
+          color: containerColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
@@ -96,8 +104,6 @@ class CustomCartHomeScreen extends StatelessWidget {
     );
   }
 }
-
-
 
 // class CustomCartHomeScreen extends StatelessWidget {
 //   final DataNewsModel newsModel;

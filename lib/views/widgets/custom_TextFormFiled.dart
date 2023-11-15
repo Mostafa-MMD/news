@@ -1,6 +1,8 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:master/models/model_provider.dart';
+import 'package:provider/provider.dart';
 class CustomTextFormFiled extends StatelessWidget {
   CustomTextFormFiled({
     Key? key,
@@ -19,6 +21,9 @@ class CustomTextFormFiled extends StatelessWidget {
   String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
+    final modelProvider = context.watch<ModelProvider>();
+    final isDarkModeEnabled = modelProvider.isDarkModeEnabled;
+    final iconColor = isDarkModeEnabled ? Colors.blue[900] : Colors.blue;
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: TextFormField(
@@ -44,12 +49,12 @@ class CustomTextFormFiled extends StatelessWidget {
           ),
           prefixIcon: Icon(
             icon,
-            color: Colors.blue,
+            color: iconColor,
             size: 20,
           ),
           hintText: text,
           hintStyle: TextStyle(
-            color: Colors.blue,
+            color: iconColor,
             fontSize: 20,
           ),
           filled: true,

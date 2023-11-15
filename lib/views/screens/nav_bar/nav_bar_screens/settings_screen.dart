@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:master/views/screens/nav_bar/main_navbar.dart';
 import 'package:master/views/widgets/custom_app_bar_for_details_and_home_screen.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../models/model_provider.dart';
 import '../../../widgets/custom_listTile_settings_screen.dart';
 
@@ -12,9 +11,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final modelProvider = context.watch<ModelProvider>();
-    // final isDarkModeEnabled = modelProvider.isDarkModeEnabled;
-    // final cardColor = isDarkModeEnabled ? Colors.red : Colors.white;
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -50,6 +46,7 @@ class SettingsScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
+                    color: Colors.black,
                   ),
                 ),
                 SizedBox(height: 32.0),
@@ -63,10 +60,10 @@ class SettingsScreen extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0),
                         child: Card(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
+                          // color: Colors.white,
+                          // shape: RoundedRectangleBorder(
+                          //   borderRadius: BorderRadius.circular(20.0),
+                          // ),
                           child: Column(
                             children: [
                               CustomListTileSwitchSettingsScreen(
@@ -103,10 +100,10 @@ class SettingsScreen extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0),
                         child: Card(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
+                          // color: Colors.white,
+                          // shape: RoundedRectangleBorder(
+                          //   borderRadius: BorderRadius.circular(20.0),
+                          // ),
                           child: Column(
                             children: [
                               CustomListTileSettingsScreen(
@@ -133,10 +130,10 @@ class SettingsScreen extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0),
                         child: Card(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
+                          // color: Colors.white,
+                          // shape: RoundedRectangleBorder(
+                          //   borderRadius: BorderRadius.circular(20.0),
+                          // ),
                           child: Column(
                             children: [
                               CustomListTileSettingsScreen(
@@ -163,10 +160,10 @@ class SettingsScreen extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0),
                         child: Card(
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
+                          // color: Colors.white,
+                          // shape: RoundedRectangleBorder(
+                          //   borderRadius: BorderRadius.circular(20.0),
+                          // ),
                           child: Column(
                             children: [
                               CustomListTileSettingsScreen(

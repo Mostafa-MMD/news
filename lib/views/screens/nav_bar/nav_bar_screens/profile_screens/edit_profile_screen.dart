@@ -9,21 +9,17 @@ import '../../../../widgets/custom_TextFormFiled.dart';
 class EditeProfileScreen extends StatefulWidget {
   const EditeProfileScreen({Key? key}) : super(key: key);
   static String editeProfileRoute = 'editeProfileRoute';
+
   @override
   State<EditeProfileScreen> createState() => _EditeProfileScreenState();
 }
 
 class _EditeProfileScreenState extends State<EditeProfileScreen> {
   // TextEditingController emailController = TextEditingController();
-
   // TextEditingController userNameController = TextEditingController();
-
   // TextEditingController countryController = TextEditingController();
-
   // TextEditingController addressController = TextEditingController();
-
   // TextEditingController phoneNumberController = TextEditingController();
-
   // TextEditingController ageController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
@@ -33,11 +29,17 @@ class _EditeProfileScreenState extends State<EditeProfileScreen> {
       addAddress,
       addPhoneNumber,
       addAge;
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ModelProvider>(context, listen: false);
     final box = HiveFunctionBox.getProfileBox();
     late ProfileHiveModel newData;
+    final modelProvider = context.watch<ModelProvider>();
+    final isDarkModeEnabled = modelProvider.isDarkModeEnabled;
+    final defaultColor = isDarkModeEnabled ? Colors.black : Colors.white;
+    final containerColor = isDarkModeEnabled ? Colors.black87 : Colors.white;
+    final iconColor = isDarkModeEnabled ? Colors.white : Colors.black;
     return Form(
       key: formKey,
       child: Container(
@@ -50,18 +52,19 @@ class _EditeProfileScreenState extends State<EditeProfileScreen> {
               leading: IconButton(
                 onPressed: () {
                   //Navigator.pop(context);
-                  Navigator.pushNamedAndRemoveUntil(context,
-                          ProfileScreen.profileRoute, (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, ProfileScreen.profileRoute, (route) => false);
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_ios,
                   size: 30,
+                  color: defaultColor,
                 ),
               ),
-              title: const Text(
+              title: Text(
                 'Edite Profile',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: defaultColor,
                   fontSize: 30,
                   letterSpacing: 2,
                   fontWeight: FontWeight.w600,
@@ -89,9 +92,10 @@ class _EditeProfileScreenState extends State<EditeProfileScreen> {
                       setState(() {});
                     }
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.save_alt,
                     size: 30,
+                    color: defaultColor,
                   ),
                 ),
               ],
@@ -121,15 +125,15 @@ class _EditeProfileScreenState extends State<EditeProfileScreen> {
                   top: 140,
                   right: 120,
                   child: CircleAvatar(
-                    backgroundColor: Colors.white,
+                    backgroundColor: defaultColor,
                     child: IconButton(
                       onPressed: () async {
                         //await provider.deleteProfile(newData);
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.camera_alt_outlined,
                         size: 25,
-                        color: Colors.black,
+                        color: iconColor,
                       ),
                     ),
                   ),
@@ -143,8 +147,8 @@ class _EditeProfileScreenState extends State<EditeProfileScreen> {
                 left: 20,
               ),
               height: MediaQuery.of(context).size.height / 1.6,
-              decoration: const BoxDecoration(
-                color: Colors.white,
+              decoration: BoxDecoration(
+                color: containerColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40),
@@ -185,8 +189,8 @@ class _EditeProfileScreenState extends State<EditeProfileScreen> {
                             CustomTextFormFiled(
                               text: 'User Name',
                               icon: Icons.person_outline_outlined,
-                              controller: provider
-                                  .userNameController, //userNameController,
+                              controller: provider.userNameController,
+                              //userNameController,
                               textInputType: TextInputType.text,
                               onSaved: (value) {
                                 addUserName = value!;
@@ -205,8 +209,8 @@ class _EditeProfileScreenState extends State<EditeProfileScreen> {
                             CustomTextFormFiled(
                               text: 'Country',
                               icon: Icons.flag_circle_outlined,
-                              controller: provider
-                                  .countryController, // countryController,
+                              controller: provider.countryController,
+                              // countryController,
                               textInputType: TextInputType.text,
                               onSaved: (value) {
                                 addCountry = value!;
@@ -225,8 +229,8 @@ class _EditeProfileScreenState extends State<EditeProfileScreen> {
                             CustomTextFormFiled(
                               text: 'Address',
                               icon: Icons.apartment_outlined,
-                              controller: provider
-                                  .addressController, //addressController,
+                              controller: provider.addressController,
+                              //addressController,
                               textInputType: TextInputType.text,
                               onSaved: (value) {
                                 addAddress = value!;
@@ -245,8 +249,8 @@ class _EditeProfileScreenState extends State<EditeProfileScreen> {
                             CustomTextFormFiled(
                               text: 'Phone Number',
                               icon: Icons.phone_android_outlined,
-                              controller: provider
-                                  .phoneNumberController, //phoneNumberController,
+                              controller: provider.phoneNumberController,
+                              //phoneNumberController,
                               textInputType: TextInputType.phone,
                               onSaved: (value) {
                                 addPhoneNumber = value!;
@@ -265,8 +269,8 @@ class _EditeProfileScreenState extends State<EditeProfileScreen> {
                             CustomTextFormFiled(
                               text: 'Age',
                               icon: Icons.hdr_auto_sharp,
-                              controller:
-                                  provider.ageController, //ageController,
+                              controller: provider.ageController,
+                              //ageController,
                               textInputType: TextInputType.number,
                               onSaved: (value) {
                                 addAge = value!;

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:master/models/model_provider.dart';
 import 'package:master/views/widgets/custom_app_bar_for_details_and_home_screen.dart';
+import 'package:provider/provider.dart';
 import '../../models/data_news_model.dart';
 
 class NewsDetailsScreen extends StatelessWidget {
@@ -12,6 +14,12 @@ class NewsDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final modelProvider = context.watch<ModelProvider>();
+    final isDarkModeEnabled = modelProvider.isDarkModeEnabled;
+    final defaultColor = isDarkModeEnabled ? Colors.black : Colors.white;
+    final descriptionColor = isDarkModeEnabled ? Colors.white54 : Colors.black54;
+    final boxColor = isDarkModeEnabled ? Colors.red[900] : Colors.red;
+
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -25,10 +33,10 @@ class NewsDetailsScreen extends StatelessWidget {
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(75),
             child: CustomAppBarForDetailsAndHomeScreen(
-              colorIconLeading: Colors.white,
+              colorIconLeading: defaultColor,
               title: 'Details',
-              colorTitle: Colors.white,
-              colorIconAction: Colors.white,
+              colorTitle: defaultColor,
+              colorIconAction: defaultColor,
               leading: IconButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -36,7 +44,7 @@ class NewsDetailsScreen extends StatelessWidget {
                 icon: Icon(
                   Icons.arrow_back_ios,
                   size: 32,
-                  //color: colorIconLeading ?? Colors.black,
+                  color: defaultColor,
                 ),
               ),
             ),
@@ -60,7 +68,7 @@ class NewsDetailsScreen extends StatelessWidget {
             ),
             height: MediaQuery.of(context).size.height / 2,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: defaultColor,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),
                 topRight: Radius.circular(40),
@@ -108,7 +116,7 @@ class NewsDetailsScreen extends StatelessWidget {
                       Text(
                         dataNewsModel.descriptionNew.toString(),
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: descriptionColor,
                           fontSize: 16,
                         ),
                         textAlign: TextAlign.justify,
@@ -186,16 +194,16 @@ class NewsDetailsScreen extends StatelessWidget {
                           children: [
                             Container(
                               padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    blurRadius: 4,
-                                  ),
-                                ],
-                              ),
+                              // decoration: BoxDecoration(
+                              //   borderRadius: BorderRadius.circular(10),
+                              //   color: boxIconColor,
+                              //   boxShadow: [
+                              //     BoxShadow(
+                              //       color: Colors.black26,
+                              //       blurRadius: 4,
+                              //     ),
+                              //   ],
+                              // ),
                               child: Icon(
                                 Icons.save_alt,
                                 size: 40,
@@ -208,7 +216,7 @@ class NewsDetailsScreen extends StatelessWidget {
                               ),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
-                                  color: Colors.red,
+                                  color: boxColor,
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.black26,

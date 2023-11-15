@@ -24,7 +24,9 @@ Future<List<DataNewsModel>> fetchArticles() async {
 
 class HomeScreen extends StatefulWidget {
   static String homeRoute = 'homeRoute';
+
   const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
